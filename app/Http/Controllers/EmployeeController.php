@@ -7,31 +7,32 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    // RETORNA TODOS OS CARGOS
+    // RETORNA TODOS OS FUNCIONÁRIO
     public function index()
     {
         $employee = Employee::get()->toJson(JSON_PRETTY_PRINT);
         return response($employee, 200);
     }
 
-    // RETORNA CARGO POR JOB_ID
+    // RETORNA FUNCIONÁRIO POR EMPLOYEE_ID
     public function show($employee){
 
-        if (Employee::where('job_id', $employee)->exists()) {
-            $employee = Employee::where('job_id', $employee)->get()->toJson(JSON_PRETTY_PRINT);
+        if (Employee::where('employee_id', $employee)->exists()) {
+            $employee = Employee::where('employee_id', $employee)->get()->toJson(JSON_PRETTY_PRINT);
             return response($employee, 200);
           } else {
             return response()->json([
-              "message" => "Cargo Não Encontrado!"
+              "message" => "Funcionário Não Encontrado!"
             ], 404);
           }
     }
 
-    // CADASTRA CARGO
+    // CADASTRA FUNCIONÁRIO
     public function store()
     {
         $employee = [
             'first_name' => request('first_name'),
+            'last_name' => request('last_name'),
             'email' => request('email'),
             'phone_number' => request('phone_number'),
             'hire_date' => request('hire_date'),
@@ -40,21 +41,21 @@ class EmployeeController extends Controller
             ];
             Employee::create($employee);
             return response()->json([
-                "message" => "Cargo Registrado com Sucesso!"
+                "message" => "Funcionário Registrado com Sucesso!"
               ], 201);
     }
 
-    // CHAMA CARGO A SER EDITADO
+    // CHAMA FUNCIONÁRIO A SER EDITADO
     public function edit($employee){
         $employee = Employee::findOrFail($employee);
         return $employee;
 
     }
 
-    // ATUALIZA CARGO
+    // ATUALIZA FUNCIONÁRIO
     public function update(Request $request, $employee)
     {
-        if (Employee::where('employe_id', $employee)->exists()) {
+        if (Employee::where('employee_id', $employee)->exists()) {
             $employee = Employee::findOrFail($employee);
 
             $employee->first_name = is_null($request->first_name) ? $employee->first_name : $request->first_name;
@@ -67,19 +68,19 @@ class EmployeeController extends Controller
             $employee->save();
 
             return response()->json([
-              "message" => "Cargo Atualizado com Sucesso!"
+              "message" => "Funcionário Atualizado com Sucesso!"
             ], 200);
           } else {
             return response()->json([
-              "message" => "Cargo Não Atualizado!"
+              "message" => "Funcionário Não Atualizado!"
             ], 404);
           }
     }
 
-    // DELETA CARGO
+    // DELETA FUNCIONÁRIO
     public function destroy($employee)
     {
-        if(Employee::where('employe_id', $employee)->exists()) {
+        if(Employee::where('employee_id', $employee)->exists()) {
             $employee = Employee::find($employee);
             $employee->delete();
 
@@ -88,7 +89,7 @@ class EmployeeController extends Controller
             ], 202);
           } else {
             return response()->json([
-              "message" => "Cargo Não Encontrado!"
+              "message" => "Funcionário Não Encontrado!"
             ], 404);
           }
 
