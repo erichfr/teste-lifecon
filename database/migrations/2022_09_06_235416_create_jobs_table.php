@@ -14,7 +14,7 @@ class CreateJobsTable extends Migration
     public function up()
     {
         Schema::create('jobs', function (Blueprint $table) {
-            $table->integer('job_id', true);
+            $table->bigIncrements('job_id', true)->primary()->autoIncrement();
             $table->string('job_title', 35);
             $table->decimal('min_salary')->nullable();
             $table->decimal('max_salary')->nullable();
