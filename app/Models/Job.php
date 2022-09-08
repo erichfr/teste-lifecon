@@ -10,19 +10,20 @@ class Job extends Model
     use HasFactory;
 
     public $timestamps = false;
-    
+
     protected $primaryKey = 'job_id';
 
     protected $fillable = [
+        'job_id',
         'job_title',
         'min_salary',
         'max_salary'
     ];
 
-  /*   public function employe() {
+    public function employe() {
         return $this->belongsTo(Employe::class);
     }
-    public function department() {
-        return $this->belongsTo(Department::class);
-    } */
+    public function job() {
+        return $this->belongsTo(Job::class);
+    }
 }

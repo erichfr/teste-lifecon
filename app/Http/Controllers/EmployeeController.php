@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Models\Employee;
+use App\Models\Job;
+use App\Models\Department;
 
 class EmployeeController extends Controller
 {
-    // RETORNA TODOS OS FUNCIONÁRIO
+    // RETORNA TODOS OS FUNCIONÁRIOS
     public function index()
     {
         $employee = Employee::get()->toJson(JSON_PRETTY_PRINT);
@@ -53,28 +55,19 @@ class EmployeeController extends Controller
     }
 
     // ATUALIZA FUNCIONÁRIO
-    public function update(Request $request, $employee)
+    public function update(Request $request, Employee $employee)
     {
-        if (Employee::where('employee_id', $employee)->exists()) {
-            $employee = Employee::findOrFail($employee);
-
-            $employee->first_name = is_null($request->first_name) ? $employee->first_name : $request->first_name;
-            $employee->last_name = is_null($request->last_name) ? $employee->last_name : $request->last_name;
-            $employee->email = is_null($request->email) ? $employee->email : $request->email;
-            $employee->phone_number = is_null($request->phone_number) ? $employee->phone_number : $request->phone_number;
-            $employee->hire_date = is_null($request->hire_date) ? $employee->hire_date : $request->hire_date;
-            $employee->job_id = is_null($request->job_id) ? $employee->job_id : $request->job_id;
-            $employee->salary = is_null($request->salary) ? $employee->salary : $request->salary;
-            $employee->save();
-
+        if($employee->update($request->all())) {
+            print_r($request);
+            die;
             return response()->json([
-              "message" => "Funcionário Atualizado com Sucesso!"
-            ], 200);
-          } else {
+                "message" => "Cargo Atualizado com Sucesso!"
+              ], 200);
+        } else {
             return response()->json([
-              "message" => "Funcionário Não Atualizado!"
-            ], 404);
-          }
+                "message" => "Cargo Não Atualizado!"
+              ], 404);
+        }
     }
 
     // DELETA FUNCIONÁRIO

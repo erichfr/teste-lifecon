@@ -14,7 +14,7 @@ class CreateEmployeesTable extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->bigIncrements('employee_id', true)->primary()->autoIncrement();
+            $table->integer('employee_id', true);
             $table->string('first_name', 20)->nullable();
             $table->string('last_name', 25);
             $table->string('email', 100);

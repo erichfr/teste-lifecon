@@ -50,24 +50,17 @@ class JobController extends Controller
     }
 
     // ATUALIZA CARGO
-    public function update(Request $request, $job)
+    public function update(Request $request, Job $job)
     {
-        if (Job::where('job_id', $job)->exists()) {
-            $job = Job::findOrFail($job);
-
-            $job->job_title = is_null($request->job_title) ? $job->job_title : $request->job_title;
-            $job->min_salary = is_null($request->min_salary) ? $job->min_salary : $request->min_salary;
-            $job->max_salary = is_null($request->max_salary) ? $job->max_salary : $request->max_salary;
-            $job->save();
-
+        if($job->update($request->all())) {
             return response()->json([
-              "message" => "Cargo Atualizado com Sucesso!"
-            ], 200);
-          } else {
+                "message" => "Cargo Atualizado com Sucesso!"
+              ], 200);
+        } else {
             return response()->json([
-              "message" => "Cargo Não Atualizado!"
-            ], 404);
-          }
+                "message" => "Cargo Não Atualizado!"
+              ], 404);
+        }
     }
 
     // DELETA CARGO

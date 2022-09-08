@@ -11,21 +11,26 @@ class Employee extends Model
 
     public $timestamps = false;
 
-    protected $fillable =[
+    protected $primaryKey = 'employee_id';
+
+    protected $fillable = [
+
+        'employee_id',
         'first_name',
         'last_name',
         'email',
         'phone_number',
         'hire_date',
         'job_id',
-        'salary'
+        'salary',
+        'department_id'
     ];
 
-    /* public function departments() {
-        return $this->hasMany(Department::class);
+    public function employees() {
+        return $this->hasMany(Employee::class);
     }
 
     public function job() {
         return $this->belongsTo(Job::class);
-    } */
+    }
 }

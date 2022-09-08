@@ -11,7 +11,10 @@ class Department extends Model
 
     public $timestamps = false;
 
+    protected $primaryKey = 'department_id';
+
     protected $fillable = [
+        'department_id',
         'department_name',
         'location_id'
     ];
