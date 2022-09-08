@@ -52,7 +52,13 @@ class DepartmentController extends Controller
     // ATUALIZA CARGO
     public function update(Request $request, Department $department)
     {
-        if($department->update($request->all())) {
+
+        $department = Department::find($request->department_id);
+        $department = Department::findOrFail($request->department_id);
+
+        if($department->fill($request->all())) {
+            $department->save();
+
             return response()->json([
                 "message" => "Cargo Atualizado com Sucesso!"
               ], 200);
@@ -62,6 +68,7 @@ class DepartmentController extends Controller
               ], 404);
         }
     }
+
 
     // DELETA CARGO
     public function destroy($department)

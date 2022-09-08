@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
-use App\Models\Job;
-use App\Models\Department;
+
 
 class EmployeeController extends Controller
 {
@@ -57,9 +56,12 @@ class EmployeeController extends Controller
     // ATUALIZA FUNCIONÁRIO
     public function update(Request $request, Employee $employee)
     {
-        if($employee->update($request->all())) {
-            print_r($request);
-            die;
+        $employee = Employee::find($request->employee_id);
+        $employee = Employee::findOrFail($request->employee_id);
+
+        if($employee->fill($request->all())) {
+            $employee->save();
+
             return response()->json([
                 "message" => "Cargo Atualizado com Sucesso!"
               ], 200);
