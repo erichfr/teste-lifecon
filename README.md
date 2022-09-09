@@ -17,7 +17,7 @@ Descrição do desafio:
 ## Instalação
 
 ```
-Clonando o projeto: `[http://](https://github.com/erichfr/teste-lifecon.git)]`;
+Clonando o projeto: (https://github.com/erichfr/teste-lifecon.git);
 No terminal digite: cd teste-lifecon;
 Iniciando o servidor: php artisan serve;
 Gerando a key: php artisan key:generate;
@@ -81,6 +81,7 @@ DELETE /api/departments/{department_id}
 - Php 7.4
 - Laravel 8;
 - Mysql.
+
 ```
 
 
