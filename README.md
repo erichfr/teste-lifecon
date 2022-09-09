@@ -40,7 +40,7 @@ GET /api/jobs?{job_id}=
     /api/jobs?{job_title}=
              
 PUT /api/jobs/{job_id}=
-POST /api/jobs/insert
+POST /api/jobs
 DELETE /api/jobs/{job_id}=
 ```
 
@@ -59,7 +59,7 @@ GET /api/employees?{employees_id}=
     /api/employees?{department_id}=
              
 PUT /api/jemployees/{employees_id}
-POST /api/employees/insert
+POST /api/employees
 DELETE /api/employees/{employees_id}=
 ```
 
@@ -73,7 +73,7 @@ GET /api/departments?departments_id=1
              
              
 PUT /api/department_name/{department_id}
-POST /api/departments/insert
+POST /api/departments
 DELETE /api/departments/{department_id}
 ```
 
