@@ -29,7 +29,7 @@ Route::get('/jobs', function(Request $request) {
     $job = $query->get();
         return $job;
 });
-Route::post('/jobs/insert', [JobController::class, 'store']);
+Route::post('/jobs', [JobController::class, 'store']);
 Route::put('/jobs/{job}', [JobController::class, 'update']);
 Route::delete('/jobs/{job}', [JobController::class, 'destroy']);
 
@@ -67,7 +67,7 @@ Route::get('/employees', function(Request $request) {
     $employee = $query->get();
         return $employee;
 });
-Route::post('/employees/insert', [EmployeeController::class, 'store']);
+Route::post('/employees', [EmployeeController::class, 'store']);
 Route::put('/employees/{employee_id}', [EmployeeController::class, 'update']);
 Route::delete('/employees/{employee_id}', [EmployeeController::class, 'destroy']);
 
@@ -89,6 +89,6 @@ Route::get('/departments', function(Request $request) {
     $department = $query->get();
         return $department;
 });
-Route::post('/departments/insert', [DepartmentController::class, 'store']);
+Route::post('/departments', [DepartmentController::class, 'store']);
 Route::put('/departments/{department_id}', [DepartmentController::class, 'update']);
 Route::delete('/departments/{department_id}', [DepartmentController::class, 'destroy']);
