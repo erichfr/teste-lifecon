@@ -57,9 +57,7 @@ Filtros:     /api/employees?{employees_id}=
              /api/employees?{department_id}=
              
 Atualizando: /api/jemployees/{employees_id}
-
 Inserindo:   /api/employees/insert
-
 Deletando:   /api/employees/{employees_id}=
 ```
 
@@ -73,9 +71,7 @@ Filtros:     /api/departments?departments_id=1
              
              
 Atualizando: /api/department_name/{department_id}
-
 Inserindo:   /api/departments/insert
-
 Deletando:   /api/departments/{department_id}
 ```
 
