@@ -33,46 +33,46 @@ Migrando: php artisan migrate.
 
 Jobs
 ```
-Retorna all: /api/jobs
+GET /api/jobs
 
-Filtros:      /api/jobs?{job_id}=
-              /api/jobs?{job_title}=
+GET /api/jobs?{job_id}=
+    /api/jobs?{job_title}=
              
-Atualizando: /api/jobs/{job_id}=
-Inserindo:   /api/jobs/insert
-Deletando:   /api/jobs/{job_id}=
+PUT /api/jobs/{job_id}=
+POST /api/jobs/insert
+DELETE /api/jobs/{job_id}=
 ```
 Employees
 ```
-Retorna all: /api/employees
+GET /api/employees
 
-Filtros:     /api/employees?{employees_id}=
-             /api/employees?{first_name}=
-             /api/employees?{last_name}=
-             /api/employees?{email}=
-             /api/employees?{phone_number}=
-             /api/employees?{hire_date}=
-             /api/employees?{job_id}=
-             /api/employees?{salary}=
-             /api/employees?{department_id}=
+GET /api/employees?{employees_id}=
+    /api/employees?{first_name}=
+    /api/employees?{last_name}=
+    /api/employees?{email}=
+    /api/employees?{phone_number}=
+    /api/employees?{hire_date}=
+    /api/employees?{job_id}=
+    /api/employees?{salary}=
+    /api/employees?{department_id}=
              
-Atualizando: /api/jemployees/{employees_id}
-Inserindo:   /api/employees/insert
-Deletando:   /api/employees/{employees_id}=
+PUT /api/jemployees/{employees_id}
+POST /api/employees/insert
+DELETE /api/employees/{employees_id}=
 ```
 
 Departments
 ```
-Retorna all: /api/departments
+GET /api/departments
 
-Filtros:     /api/departments?departments_id=1
-             /api/department_name?department_name=1
-             /api/department_name?department_name=1
+GET /api/departments?departments_id=1
+    /api/department_name?department_name=1
+    /api/department_name?department_name=1
              
              
-Atualizando: /api/department_name/{department_id}
-Inserindo:   /api/departments/insert
-Deletando:   /api/departments/{department_id}
+PUT /api/department_name/{department_id}
+POST /api/departments/insert
+DELETE /api/departments/{department_id}
 ```
 
 
