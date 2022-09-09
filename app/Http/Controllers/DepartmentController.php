@@ -8,27 +8,12 @@ use App\Models\Department;
 class DepartmentController extends Controller
 {
 
-    // RETORNA TODOS OS CARGOS
     public function index()
     {
         $department = Department::get()->toJson(JSON_PRETTY_PRINT);
         return response($department, 200);
     }
 
-    // RETORNA CARGO POR JOB_ID
-    public function show($department){
-
-        if (Department::where('department_id', $department)->exists()) {
-            $department = Department::where('department_id', $department)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($department, 200);
-          } else {
-            return response()->json([
-              "message" => "Cargo Não Encontrado!"
-            ], 404);
-          }
-    }
-
-    // CADASTRA CARGO
     public function store()
     {
         $department = [
@@ -42,14 +27,6 @@ class DepartmentController extends Controller
               ], 201);
     }
 
-    // CHAMA CARGO A SER EDITADO
-    public function edit(Department $department){
-        $department = Department::findOrFail($department);
-        return $department;
-
-    }
-
-    // ATUALIZA CARGO
     public function update(Request $request, Department $department)
     {
 
@@ -69,8 +46,6 @@ class DepartmentController extends Controller
         }
     }
 
-
-    // DELETA CARGO
     public function destroy($department)
     {
         if(Department::where('department_id', $department)->exists()) {
@@ -85,6 +60,5 @@ class DepartmentController extends Controller
               "message" => "Cargo Não Encontrado!"
             ], 404);
           }
-
     }
 }

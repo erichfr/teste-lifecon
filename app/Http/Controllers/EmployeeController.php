@@ -8,27 +8,13 @@ use App\Models\Employee;
 
 class EmployeeController extends Controller
 {
-    // RETORNA TODOS OS FUNCIONÁRIOS
+
     public function index()
     {
         $employee = Employee::get()->toJson(JSON_PRETTY_PRINT);
         return response($employee, 200);
     }
 
-    // RETORNA FUNCIONÁRIO POR EMPLOYEE_ID
-    public function show($employee){
-
-        if (Employee::where('employee_id', $employee)->exists()) {
-            $employee = Employee::where('employee_id', $employee)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($employee, 200);
-          } else {
-            return response()->json([
-              "message" => "Funcionário Não Encontrado!"
-            ], 404);
-          }
-    }
-
-    // CADASTRA FUNCIONÁRIO
     public function store()
     {
         $employee = [
@@ -46,14 +32,6 @@ class EmployeeController extends Controller
               ], 201);
     }
 
-    // CHAMA FUNCIONÁRIO A SER EDITADO
-    public function edit($employee){
-        $employee = Employee::findOrFail($employee);
-        return $employee;
-
-    }
-
-    // ATUALIZA FUNCIONÁRIO
     public function update(Request $request, Employee $employee)
     {
         $employee = Employee::find($request->employee_id);
@@ -72,7 +50,6 @@ class EmployeeController extends Controller
         }
     }
 
-    // DELETA FUNCIONÁRIO
     public function destroy($employee)
     {
         if(Employee::where('employee_id', $employee)->exists()) {

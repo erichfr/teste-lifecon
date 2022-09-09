@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\JobController;
-use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\DepartmentController;
 use App\Models\Job;
+use App\Http\Controllers\EmployeeController;
 use App\Models\Employee;
+use App\Http\Controllers\DepartmentController;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -29,10 +29,9 @@ Route::get('/jobs', function(Request $request) {
     $job = $query->get();
         return $job;
 });
-Route::post('/jobs', [JobController::class, 'store']); // => FUNCIONANDO
-Route::get('/jobs/{job}/edit', [JobController::class, 'edit']); // => NÃO ESTÁ FUNCIONANDO
-Route::put('/jobs/{job}', [JobController::class, 'update']); // FUNCIONANDO
-Route::delete('/jobs/{job}', [JobController::class, 'destroy']); // => FUNCIONANDO
+Route::post('/jobs/insert', [JobController::class, 'store']);
+Route::put('/jobs/{job}', [JobController::class, 'update']);
+Route::delete('/jobs/{job}', [JobController::class, 'destroy']);
 
 Route::get('/employees', function(Request $request) {
 
@@ -68,12 +67,11 @@ Route::get('/employees', function(Request $request) {
     $employee = $query->get();
         return $employee;
 });
-Route::get('/employees/{employee_id}', [EmployeeController::class, 'show']); // FUNCIONA, MAS O ID DO CARGO DEVE EXISTIR. O EMPREGADO DEVE SER CADASTRADO PRIMEIRO
-Route::get('/employees/{employee_id/edit', [EmployeeController::class, 'edit']); // NÃO ESTÁ FUNCIONANDO
-Route::put('/employees/{employee_id}', [EmployeeController::class, 'update']); // NÃO ESTÁ FUNCIONANDO
+Route::post('/employees/insert', [EmployeeController::class, 'store']);
+Route::put('/employees/{employee_id}', [EmployeeController::class, 'update']);
 Route::delete('/employees/{employee_id}', [EmployeeController::class, 'destroy']);
 
-// Route::get('/departments', [DepartmentController::class, 'index']);
+
 Route::get('/departments', function(Request $request) {
 
     $query = Department::query();
@@ -91,8 +89,6 @@ Route::get('/departments', function(Request $request) {
     $department = $query->get();
         return $department;
 });
-Route::post('/departments', [DepartmentController::class, 'store']);
-Route::get('/departments/{department_id}', [DepartmentController::class, 'show']);
-Route::patch('/departments/{department_id}', [DepartmentController::class, 'edit']);
+Route::post('/departments/insert', [DepartmentController::class, 'store']);
 Route::put('/departments/{department_id}', [DepartmentController::class, 'update']);
 Route::delete('/departments/{department_id}', [DepartmentController::class, 'destroy']);

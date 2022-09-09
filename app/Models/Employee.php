@@ -25,12 +25,4 @@ class Employee extends Model
         'salary',
         'department_id'
     ];
-
-    public function employees() {
-        return $this->hasMany(Employee::class);
-    }
-
-    public function job() {
-        return $this->belongsTo(Job::class);
-    }
 }

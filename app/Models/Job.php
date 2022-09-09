@@ -19,11 +19,4 @@ class Job extends Model
         'min_salary',
         'max_salary'
     ];
-
-    public function employe() {
-        return $this->belongsTo(Employe::class);
-    }
-    public function job() {
-        return $this->belongsTo(Job::class);
-    }
 }

@@ -18,8 +18,4 @@ class Department extends Model
         'department_name',
         'location_id'
     ];
-
-    /* public function departments() {
-        return $this->hasMany(Employes::class);
-    } */
 }

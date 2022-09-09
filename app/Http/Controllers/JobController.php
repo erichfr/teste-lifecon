@@ -8,27 +8,12 @@ use App\Models\Job;
 class JobController extends Controller
 {
 
-    // RETORNA TODOS OS CARGOS
     public function index()
     {
         $jobs = Job::get()->toJson(JSON_PRETTY_PRINT);
         return response($jobs, 200);
     }
 
-    // RETORNA CARGO POR JOB_ID
-    public function show($job){
-
-        if (Job::where('job_id', $job)->exists()) {
-            $job = Job::where('job_id', $job)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($job, 200);
-          } else {
-            return response()->json([
-              "message" => "Cargo Não Encontrado!"
-            ], 404);
-          }
-    }
-
-    // CADASTRA CARGO
     public function store()
     {
         $job = [
@@ -42,14 +27,6 @@ class JobController extends Controller
               ], 201);
     }
 
-    // CHAMA CARGO A SER EDITADO
-    public function edit($job){
-        $job = Job::findOrFail($job);
-        return $job;
-
-    }
-
-    // ATUALIZA CARGO
     public function update(Request $request, Job $job)
     {
         if($job->update($request->all())) {
@@ -63,7 +40,6 @@ class JobController extends Controller
         }
     }
 
-    // DELETA CARGO
     public function destroy($job)
     {
         if(Job::where('job_id', $job)->exists()) {
