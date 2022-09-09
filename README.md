@@ -6,8 +6,8 @@ Teste de avaliação back-end, Php.<br>
 Empresa Lifecon.
 
 Descrição do desafio:
-- Criar o cadastro de empregado; 
-- Criar listar empregados relacionados a um departamento. 
+- Criar o cadastro de empregados
+- Criar e listar empregados relacionados a um departamento. 
 
 ## Regras
 
@@ -23,6 +23,7 @@ Iniciando o servidor: php artisan serve;
 Gerando a key: php artisan key:generate;
 Arquivo sql: \projeto-lifecon\db\db_avaliacao.sql;
 Importe o arquivo db_avaliacao para o seu SGDB;
+
 database: db_avaliacao
 User: root
 Pass: -
